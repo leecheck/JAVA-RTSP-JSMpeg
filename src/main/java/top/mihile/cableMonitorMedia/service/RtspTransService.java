@@ -21,12 +21,15 @@ public class RtspTransService {
     @Value("${server.port}")
     private Integer port;
 
+    @Value("${mihile.ffmpegpath}")
+    private String ffmpegpath;
+
     public static Map<UUID,Thread> ffmpegProcessMap = new ConcurrentHashMap<>();
     public static Map<UUID,Timer> ffmpegProcessTimerMap = new ConcurrentHashMap<>();
 
     public void doStartTrans(String url, UUID playChannel){
         List<String> commands = new ArrayList<String>();
-        commands.add("ffmpeg");
+        commands.add(ffmpegpath + "ffmpeg");
         commands.add("-stimeout");
         commands.add("5000000");
         commands.add("-rtsp_transport");

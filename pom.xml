@@ -11,9 +11,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>mihile-cableMonitor</groupId>
-    <artifactId>mihile-cableMonitor-media</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <name>cableMonitor</name>
+    <description>cableMonitor rtsp server</description>
+    <groupId>leecheck-cableMonitor-media</groupId>
+    <artifactId>cableMonitor</artifactId>
+    <version>1.0</version>
 
 
     <properties>
@@ -77,10 +79,27 @@
     </dependencies>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.4.1.Final</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${name}-${version}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
